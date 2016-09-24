@@ -1,7 +1,9 @@
 /* HelloEGit.java
+ * 
  * Ks. https://www.youtube.com/watch?v=cdsMIX9gB94
  * Video kohta 8:10
- * RMC/team/share_project
+ * HUOM: RMC/team/share_project
+ * ----------------------------
  * 
  * GOOD Tutorial Videos:
  * Git tutorial 1: creating github repo and sharing project in Eclipse 4.5.1 
