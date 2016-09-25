@@ -22,9 +22,14 @@ public class HelloEGit {
 	public static void main(String[] args) {
 		System.out.println("Hello Eclipse Neon Git");
 		System.out.println("GREEN says Hello to Eclipse Neon Git");
+
 		int count = 0;
-		//Green: remove for loop
+
 		//Green comment
+
+		// WHITE: changes
+
+		for (int i =0; i<20; i++) count += i;
 		System.out.println("WHITE count: " + count);
 		
 		
