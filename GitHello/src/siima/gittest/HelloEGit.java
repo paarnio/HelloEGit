@@ -11,7 +11,8 @@
  * Git tutorial 2: Committing, pushing, pulling and resolving conflicts with git and Eclipse 4.5.1 
  * https://www.youtube.com/watch?v=M88sKbRDR8Y#t=2.26777
  * 
- * 
+ * Remote Git Server and Merging:Git & Eclipse 
+ * https://www.youtube.com/watch?v=KfeqnernMmE#t=0
  */
 
 package siima.gittest;
