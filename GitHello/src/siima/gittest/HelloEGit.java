@@ -21,6 +21,7 @@ public class HelloEGit {
 
 	public static void main(String[] args) {
 		System.out.println("Hello Eclipse Neon Git");
+		System.out.println("GREEN says Hello to Eclipse Neon Git");
 
 	}
 
