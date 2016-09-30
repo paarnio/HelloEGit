@@ -106,7 +106,7 @@ public class MyBicycleWithImports {
 	    
 	    System.out.println("x-model://b before (Main Model Before import)");
 	    System.out.println("-------------------------------------------");
-	   // model.write(System.out, "N3");
+	    //model.write(System.out, "N3");
 	    System.out.println("\n");	    
 	    
 //	    assertTrue("import b->a does (??not) exist", model.hasLoadedImport(imp_ont_url));
@@ -123,7 +123,7 @@ public class MyBicycleWithImports {
 	    
 	    System.out.println("x-model://b (Main Model After SubModel loading)");
 	    System.out.println("-------------------------------------------");
-	    //model.write(System.out, "N3");
+	    model.write(System.out, "N3");
 	    System.out.println("\n");	 
 	    
 	    /*
@@ -133,9 +133,11 @@ public class MyBicycleWithImports {
 	    
 	    System.out.println("x-model://b (Main Model with the loaded SubModel)");
 	    System.out.println("-------------------------------------------");
-	    model.writeAll(System.out, "N3"); //writeAll()
+	    //model.writeAll(System.out, "N3"); //writeAll()
 	    System.out.println("\n");	 
 	    
+	    //CLOSING MODEL
+	    model.close();
 	    
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
