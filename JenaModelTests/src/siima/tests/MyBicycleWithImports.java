@@ -1,5 +1,14 @@
 /*
- * TODO
+ * TÄSTÄ EI TUU TOLKKUA???
+ * TOIMII:
+ * Importattavaan malliin lisätään luokka (imprt.createClass("x-model://a/class"),
+ * 
+ * MUTTA MITEN???
+ * KO luokka löytyy myös pää-mallin kautta (model.contains(clazz, RDF.type, OWL.Class), 
+ * JO ENNEN kuin model.addSubModel(imprt, true) ???
+ * JOHTUUKO noista documentManager-modelSpec-olioista ?? 
+ * 
+ * 
  * Copied from "\javalab\eclwork\2014_Luna\SpinExamplesLib133AsSrc\src\siima   utils\tests
  * From: http://stackoverflow.com/questions/17292675/read-only-file-instances-of-an-ontology-model-in-jena
  * 
@@ -49,6 +58,13 @@ public class MyBicycleWithImports {
 		//altlocs.add(ont_folder + "/" + imp_ont_file);
 		//urls.add(imp_ont_url);
 		
+		/*****************
+		 * 
+		 *  OntDocumentManager & OntModelSpec
+		 * 
+		 */
+		
+		
 		// Create a doc manager / modelspec to resolve imports
 	    final OntDocumentManager docManager = new OntDocumentManager();
 	    final OntModelSpec modelSpec = new OntModelSpec(OntModelSpec.OWL_DL_MEM);
@@ -72,9 +88,11 @@ public class MyBicycleWithImports {
 	    
 	    // Populate imported model with some content
 	    //final Ontology imprtOnt = imprt.createOntology("x-model://a");
-	    //final OntClass clazz = imprt.createClass("x-model://a/class");
+	    final OntClass clazz = imprt.createClass("x-model://a/class");
 	    //assertTrue("delcared class should exist in a", imprt.contains(clazz, RDF.type, OWL.Class));
-	    
+	    Boolean is_in_model = imprt.contains(clazz, RDF.type, OWL.Class);
+	    System.out.println("(1) QUERY: x-model://a/class is in imprt model. Is't it? " + is_in_model);
+	    System.out.println("----");
 	    //VPA: from:http://answers.semanticweb.com/questions/14955/read-a-turtle-file-into-an-ontmodel
 	    InputStream is;
 		try {
@@ -109,6 +127,11 @@ public class MyBicycleWithImports {
 	    //model.write(System.out, "N3");
 	    System.out.println("\n");	    
 	    
+	    
+	    is_in_model = model.contains(clazz, RDF.type, OWL.Class);
+	    System.out.println("(2) TEST QUERY: x-model://a/class is NOT in model model (before importing imprt). Is it? " + is_in_model);
+	    System.out.println("--???? HOWEVER IT IS ??? -- BECAUSE OF DYNAMIC IMPORT SET??? BUT IT DOES NOT HAVE ANY EFFECT???");
+	    
 //	    assertTrue("import b->a does (??not) exist", model.hasLoadedImport(imp_ont_url));
 	    
 	    System.out.println("\n Has Import? " + model.hasLoadedImport(imp_ont_url));	    
@@ -124,7 +147,11 @@ public class MyBicycleWithImports {
 	    System.out.println("x-model://b (Main Model After SubModel loading)");
 	    System.out.println("-------------------------------------------");
 	    model.write(System.out, "N3");
-	    System.out.println("\n");	 
+	    System.out.println("\n");
+	    
+	    is_in_model = model.contains(clazz, RDF.type, OWL.Class);
+	    System.out.println("(3) TEST QUERY: x-model://a/class is in model model (the model importing imprt). Is't it? " + is_in_model);
+	    System.out.println("----");
 	    
 	    /*
 	     * Write ALL also submodel
@@ -133,8 +160,9 @@ public class MyBicycleWithImports {
 	    
 	    System.out.println("x-model://b (Main Model with the loaded SubModel)");
 	    System.out.println("-------------------------------------------");
-	    //model.writeAll(System.out, "N3"); //writeAll()
-	    System.out.println("\n");	 
+	    // EI TOIMI: model.writeAll(System.out, "N3"); //writeAll()
+	    System.out.println("\n");
+
 	    
 	    //CLOSING MODEL
 	    model.close();
